@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { UsersService } from './users.service';
-import type { UserInterface } from './interface/users.interface';
+import { UsersDto } from './dto/users.dto';
 
 @Controller('users')
 export class UsersController {
@@ -9,12 +9,12 @@ export class UsersController {
         private readonly usersService: UsersService) {}
 
     @Get()
-    findAll(): UserInterface[] {
+    findAll(): UsersDto[] {
         return this.usersService.findAll();
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string): UserInterface {
+    findOne(@Param('id') id: string): UsersDto {
         return this.usersService.findOne(id);
     }
 
